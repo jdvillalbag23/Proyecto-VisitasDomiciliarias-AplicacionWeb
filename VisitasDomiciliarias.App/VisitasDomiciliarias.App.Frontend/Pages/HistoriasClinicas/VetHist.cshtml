@@ -1,0 +1,51 @@
+﻿@page
+@model VisitasDomiciliarias.App.Frontend.Pages.VetHistModel
+@{
+int idHistoria = Model.Historia.HistoriaId;
+}
+<hr>
+<div class="container">
+    <div class="row">
+        <div class="col-9">
+            <h2 class="text-info">Datos del Veterinario</h2>
+        </div>
+    </div>
+</div>
+
+</br>
+<table id="tblVeterinario" class="table table-striped table-bordered" style="width: 100%;">
+
+    <thead>
+        <tr>
+            <th scope="col">VeterinarioId</th>            
+            <th scope="col">Nombres</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">Identificación</th>
+            <th scope="col">Teléfono</th>
+            <th scope="col">Tarjeta Profesional</th>            
+
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+             <tr>
+            <td>@Model.Veterinario.VeterinarioId</td>
+            <td>@Model.Veterinario.Nombres</td>
+            <td>@Model.Veterinario.Apellidos</td>
+            <td>@Model.Veterinario.Identificacion</td>
+            <td>@Model.Veterinario.Telefono</td>
+            <td>@Model.Veterinario.TarjProfesional</td>
+            
+            </tr>
+
+        </tr>
+
+    </tbody>
+</table>
+
+<hr>
+<a class="btn btn-danger" asp-page="./EditHist" asp-route-idHistoria="@idHistoria">
+    <i aria-hidden="true">Regresar</i>
+</a>
+<hr>

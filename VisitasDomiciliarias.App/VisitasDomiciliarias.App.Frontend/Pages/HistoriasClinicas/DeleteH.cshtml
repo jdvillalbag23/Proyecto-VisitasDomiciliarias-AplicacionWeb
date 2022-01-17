@@ -1,0 +1,70 @@
+﻿@page
+@model VisitasDomiciliarias.App.Frontend.Pages.DeleteHModel
+@{
+    int idHistoria = Model.Historia.HistoriaId;
+}
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h2 class="text-info">Borrar Registro</h2>
+
+            <form method="post">
+                <input type="hidden" asp-for="Historia.HistoriaId" />
+                <div class="form-group">
+                    <label asp-for="Historia.Temperatura"></label>
+                    <input asp-for="Historia.Temperatura" class="form-control" readonly>
+                    <span class="text-danger" asp-validation-for="Historia.Temperatura"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Historia.Peso"></label>
+                    <input asp-for="Historia.Peso" class="form-control" readonly>
+                    <span class="text-danger" asp-validation-for="Historia.Peso"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Historia.FrecRespiratoria"></label>
+                    <input asp-for="Historia.FrecRespiratoria" class="form-control" readonly>
+                    <span class="text-danger" asp-validation-for="Historia.FrecRespiratoria"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Historia.FrecCardiaca"></label>
+                    <input asp-for="Historia.FrecCardiaca" class="form-control" readonly>
+                    <span class="text-danger" asp-validation-for="Historia.FrecCardiaca"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Historia.EstadoAnimo"></label>
+                    <input asp-for="Historia.EstadoAnimo" class="form-control" readonly>
+                    <span class="text-danger" asp-validation-for="Historia.EstadoAnimo"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Historia.FechaVisita"></label>
+                    <input asp-for="Historia.FechaVisita" class="form-control" readonly>
+                    <span class="text-danger" asp-validation-for="Historia.FechaVisita"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Historia.Recomendaciones"></label>
+                    <input asp-for="Historia.Recomendaciones" class="form-control" readonly>
+                    <span class="text-danger" asp-validation-for="Historia.Recomendaciones"></span>
+                </div>
+
+                <hr>
+                <div class="col-12">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                        <label class="form-check-label" for="invalidCheck">
+                            Estoy de acuerdo en eliminar el registro
+                        </label>
+                        <div class="invalid-feedback">
+                            Debes estar de acuerdo para poder eliminar el registro.
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                
+                <button type="submit" class="btn btn-outline-primary">Eliminar</button>
+                
+            </form>
+        </div>
+    </div>
+</div>
+<a asp-page="./HistList" class="btn-default">Regresar a la lista de Historias Clínicas </a>
+<hr>

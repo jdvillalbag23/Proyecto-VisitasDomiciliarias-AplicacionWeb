@@ -1,0 +1,22 @@
+﻿@page
+@model VisitasDomiciliarias.App.Frontend.Pages.DetailsMascModel
+@{
+}
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h2 class="text-info">Detalle de la Mascota: @Html.DisplayFor(m => m.Mascota.MascotaId)</h2>
+                <ul class="list-group">
+                    <li class="list-group-item">Propietario ID: @Html.DisplayFor(m => m.Mascota.PropietarioId)</li>
+                    <li class="list-group-item">Nombre: @Html.DisplayFor(m => m.Mascota.Nombre)</li>
+                    <li class="list-group-item">Raza: @Html.DisplayFor(m => m.Mascota.Raza)</li>
+                    <li class="list-group-item">Edad (Años): @Html.DisplayFor(m => m.Mascota.Edad)</li>
+                    <li class="list-group-item">Tipo: @Html.DisplayFor(m => m.Mascota.Tipo)</li>
+                    <li class="list-group-item">Sexo: @Html.DisplayFor(m => m.Mascota.Genre)</li>
+                </ul>            
+        </div>
+    </div>
+</div>
+<hr>
+<a asp-page="./MascList" class="btn-default">Regresar a la lista de Mascotas </a>
+<hr>

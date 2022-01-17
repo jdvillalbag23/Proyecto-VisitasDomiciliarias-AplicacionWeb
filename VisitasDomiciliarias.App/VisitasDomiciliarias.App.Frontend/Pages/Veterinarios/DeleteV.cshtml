@@ -1,0 +1,58 @@
+﻿@page
+@model VisitasDomiciliarias.App.Frontend.Pages.DeleteVModel
+@{
+}
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h2 class="text-info">Borrar Registro</h2>
+
+            <form method="post">
+                <input type="hidden" asp-for="Veterinario.VeterinarioId" />
+                <div class="form-group">
+                    <label asp-for="Veterinario.Nombres"></label>
+                    <input asp-for="Veterinario.Nombres" class="form-control" readonly>
+                    <span class="text-danger" asp-validation-for="Veterinario.Nombres"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Veterinario.Apellidos"></label>
+                    <input asp-for="Veterinario.Apellidos" class="form-control" readonly>
+                    <span class="text-danger" asp-validation-for="Veterinario.Apellidos"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Veterinario.Identificacion"></label>
+                    <input asp-for="Veterinario.Identificacion" class="form-control" readonly>
+                    <span class="text-danger" asp-validation-for="Veterinario.Identificacion"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Veterinario.Telefono"></label>
+                    <input asp-for="Veterinario.Telefono" class="form-control" readonly>
+                    <span class="text-danger" asp-validation-for="Veterinario.Telefono"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Veterinario.TarjProfesional"></label>
+                    <input asp-for="Veterinario.TarjProfesional" class="form-control" readonly>
+                    <span class="text-danger" asp-validation-for="Veterinario.TarjProfesional"></span>
+                </div>
+                <hr>
+                <div class="col-12">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                        <label class="form-check-label" for="invalidCheck">
+                            Estoy de acuerdo en eliminar el registro
+                        </label>
+                        <div class="invalid-feedback">
+                            Debes estar de acuerdo para poder eliminar el registro.
+                        </div>
+                    </div>
+                </div>
+                <hr>
+
+                <button type="submit" class="btn btn-primary">Eliminar</button>
+            </form>
+        </div>
+    </div>
+</div>
+<hr>
+<a asp-page="./VetList" class="btn-default">Lista de Veterinarios </a>
+<hr>

@@ -1,0 +1,58 @@
+﻿@page
+@model VisitasDomiciliarias.App.Frontend.Pages.DeleteMModel
+@{
+}
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h2 class="text-info">Borrar Registro</h2>
+            <form method="post">
+                <input type="hidden" asp-for="Mascota.MascotaId" />
+
+                <div class="form-group">
+                    <label asp-for="Mascota.Nombre"></label>
+                    <input asp-for="Mascota.Nombre" class="form-control" readonly>
+                    <span class="text-danger" asp-validation-for="Mascota.Nombre"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Mascota.Raza"></label>
+                    <input asp-for="Mascota.Raza" class="form-control" readonly>
+                    <span class="text-danger" asp-validation-for="Mascota.Raza"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Mascota.Edad"></label>
+                    <input asp-for="Mascota.Edad" class="form-control" readonly>
+                    <span class="text-danger" asp-validation-for="Mascota.Edad"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Mascota.Tipo"></label>
+                    <input asp-for="Mascota.Tipo" class="form-control" readonly>
+                    <span class="text-danger" asp-validation-for="Mascota.Tipo"></span>
+                </div>
+                
+                <hr>
+                <div class="col-12">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                        <label class="form-check-label" for="invalidCheck">
+                            Estoy de acuerdo en eliminar el registro
+                        </label>
+                        <div class="invalid-feedback">
+                            Debes estar de acuerdo para poder eliminar el registro.
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                
+                <button type="submit" class="btn btn-outline-primary">Eliminar</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+<hr>
+<a asp-page="./MascList" class="btn-default">Regresar a la lista de Mascotas </a>
+<hr>

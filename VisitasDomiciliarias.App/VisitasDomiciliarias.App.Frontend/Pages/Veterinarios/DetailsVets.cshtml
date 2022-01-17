@@ -1,0 +1,21 @@
+﻿@page
+@model VisitasDomiciliarias.App.Frontend.Pages.DetailsVetsModel
+@{
+}
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h2 class="text-info">Detalle del Veterinario: @Html.DisplayFor(v => v.Veterinario.Nombres)</h2>
+                <ul class="list-group">
+                    <li class="list-group-item">Nombres: @Html.DisplayFor(v => v.Veterinario.Nombres)</li>
+                    <li class="list-group-item">Apellidos: @Html.DisplayFor(v => v.Veterinario.Apellidos)</li>
+                    <li class="list-group-item">Identificación: @Html.DisplayFor(v => v.Veterinario.Identificacion)</li>
+                    <li class="list-group-item">Tarjeta Profesional: @Html.DisplayFor(v => v.Veterinario.TarjProfesional)</li>
+
+                </ul>            
+        </div>
+    </div>
+</div>
+<hr>
+<a asp-page="./VetList" class="btn-default">Regresar a la lista de Veterinarios </a>
+<hr>

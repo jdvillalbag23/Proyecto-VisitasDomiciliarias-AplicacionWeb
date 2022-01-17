@@ -1,0 +1,91 @@
+﻿@page
+@model VisitasDomiciliarias.App.Frontend.Pages.MascListModel
+@{
+  ViewData["Title"] = "Mascota";
+}
+<hr>
+
+<h1>@ViewData["Title"]</h1>
+
+<p>Registra tu mascota, y accede al mejor servicio de mascota feliz</p>
+
+<form method="get">
+  <div class="form-group">
+    <p>
+      Buscar: <input type="text" name="filtroBusqueda" asp-for="FiltroBusqueda" />
+      <input type="submit" value="Filtrar" />
+    </p>
+</form>
+
+<hr>
+<div class="container">
+  <div class="row">
+      <div class="col-9">
+          <h2 class="text-info">Lista de Mascotas</h2>
+      </div>      
+  </div>
+</div>
+
+</br>
+
+@if(Model.Mascotas.Count()>0)
+{
+    <table id="tblMascotas" class="table table-striped table-bordered" style="width: 100%;">
+  <thead>
+    <tr> 
+      <th>@Html.DisplayNameFor(p => p.Mascotas.FirstOrDefault().PropietarioId)</th>     
+      <th>@Html.DisplayNameFor(p => p.Mascotas.FirstOrDefault().MascotaId)</th>
+      <th>@Html.DisplayNameFor(p => p.Mascotas.FirstOrDefault().Nombre)</th>
+      <th>@Html.DisplayNameFor(p => p.Mascotas.FirstOrDefault().Raza)</th>
+      <th>@Html.DisplayNameFor(p => p.Mascotas.FirstOrDefault().Edad)</th>
+      <th>@Html.DisplayNameFor(p => p.Mascotas.FirstOrDefault().Tipo)</th>
+      <th>@Html.DisplayNameFor(p => p.Mascotas.FirstOrDefault().Genre)</th>
+      
+    </tr>
+  </thead>
+
+   <tbody>
+    @foreach (var mascot in Model.Mascotas)
+  {
+     <tr>
+       <td>@Html.DisplayFor(m => mascot.PropietarioId)</td>
+       <td>@Html.DisplayFor(m => mascot.MascotaId)</td>
+       <td>@Html.DisplayFor(m => mascot.Nombre)</td>
+       <td>@Html.DisplayFor(m => mascot.Raza)</td>
+       <td>@Html.DisplayFor(m => mascot.Edad)</td>
+       <td>@Html.DisplayFor(m => mascot.Tipo)</td>
+       <td>@Html.DisplayFor(m => mascot.Genre)</td>
+              
+       <td>
+          <a class="btn btn-outline-primary table-btn" asp-page="./DetailsMasc" asp-route-mascotaId="@mascot.MascotaId">
+            <i class="fas fa-info-circle fa-lg"></i>
+          </a>
+        </td>
+
+        <td>
+          <a class="btn btn-outline-primary table-btn" asp-page="./EditMasc" asp-route-mascotaId="@mascot.MascotaId">
+            <i class="fas fa-user-edit" aria-hidden="true"> </i>
+          </a>
+        </td>
+
+        <td>
+         <a class="btn btn-outline-danger table-btn" asp-page="./DeleteM" asp-route-mascotaId="@mascot.MascotaId">
+         <i class="fas fa-trash-alt" aria-hidden="true"></i>
+        </a>
+       </td>       
+
+     </tr> 
+  }  
+  </tbody>
+</table>
+} 
+else
+{
+  <p>No hay mascotas registradas</p>
+}       
+
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+  <a asp-page="./EditMasc" class="btn btn-primary">Registrar Mascota</a>
+</div>
+<a asp-page="./MascList" class="btn-default">Regresar a la lista de Mascotas </a>
+<hr>

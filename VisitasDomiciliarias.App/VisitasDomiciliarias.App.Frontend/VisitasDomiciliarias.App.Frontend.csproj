@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <ItemGroup>
+    <ProjectReference Include="..\VisitasDomiciliarias.App.Dominio\VisitasDomiciliarias.App.Dominio.csproj" />
+    <ProjectReference Include="..\VisitasDomiciliarias.App.Persistencia\VisitasDomiciliarias.App.Persistencia.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+</Project>

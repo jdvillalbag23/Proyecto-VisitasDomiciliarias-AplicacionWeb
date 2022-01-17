@@ -1,0 +1,91 @@
+﻿@page
+@model VisitasDomiciliarias.App.Frontend.Pages.EditHistModel
+@{
+    int idHistoria = Model.Historia.HistoriaId;
+}
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h2 class="text-info">Edición o Registro de Historia Clínica</h2>
+
+            <form method="post">
+                <input type="hidden" asp-for="Historia.HistoriaId" />
+
+                <div class="form-group">
+                    <label asp-for="Historia.MascotaId"></label>
+                    <input asp-for="Historia.MascotaId" class="form-control" placeholder="Ingresa el Id de la Mascota">
+                    <span class="text-danger" asp-validation-for="Historia.MascotaId"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Historia.VeterinarioId"></label>
+                    <input asp-for="Historia.VeterinarioId" class="form-control" placeholder="Ingresa el Id del Veterinario">
+                    <span class="text-danger" asp-validation-for="Historia.VeterinarioId"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Historia.Temperatura"></label>
+                    <input asp-for="Historia.Temperatura" class="form-control" placeholder="Ingresa la temperatura">
+                    <span class="text-danger" asp-validation-for="Historia.Temperatura"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Historia.Peso"></label>
+                    <input asp-for="Historia.Peso" class="form-control" placeholder="Ingresa el peso en kg>
+                    <span class="text-danger" asp-validation-for="Historia.Peso"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Historia.FrecRespiratoria"></label>
+                    <input asp-for="Historia.FrecRespiratoria" class="form-control" placeholder="Ingresa la F. Respiratoria">
+                    <span class="text-danger" asp-validation-for="Historia.FrecRespiratoria"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Historia.FrecCardiaca"></label>
+                    <input asp-for="Historia.FrecCardiaca" class="form-control" placeholder="Ingresa la F. Cardiaca">
+                    <span class="text-danger" asp-validation-for="Historia.FrecCardiaca"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Historia.EstadoAnimo"></label>
+                    <input asp-for="Historia.EstadoAnimo" class="form-control" placeholder="Ingresa el estado de ánimo">
+                    <span class="text-danger" asp-validation-for="Historia.EstadoAnimo"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Historia.FechaVisita"></label>
+                    <input asp-for="Historia.FechaVisita" class="form-control" placeholder="Ingresa la Fecha y Hora de la visita">
+                    <span class="text-danger" asp-validation-for="Historia.FechaVisita"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Historia.Recomendaciones"></label>
+                    <input asp-for="Historia.Recomendaciones" class="form-control" placeholder="Ingresa las recomendaciones">
+                    <span class="text-danger" asp-validation-for="Historia.Recomendaciones"></span>
+                </div>
+
+                <hr>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+
+                <a class="btn btn-outline-primary table-btn" asp-page="./MascotaHist" asp-route-idHistoria="@idHistoria">
+                    <i class="fas fa-paw" aria-hidden="true"> Mostrar Mascota</i>
+                </a>
+
+                <a class="btn btn-outline-danger table-btn" asp-page="./VetHist"
+                    asp-route-idHistoria="@idHistoria">
+                    <i class="fas fa-stethoscope" aria-hidden="true"> Mostrar Veterinario</i>
+                </a>
+
+            </form>
+        </div>
+    </div>
+</div>
+<hr>
+<a asp-page="./HistList" class="btn-default">Regresar a la lista de Historias Clínicas </a>
+<hr>
+
+@* @section Scripts
+{
+    <partial name="_ValidationScriptsPartial"></partial>
+} *@

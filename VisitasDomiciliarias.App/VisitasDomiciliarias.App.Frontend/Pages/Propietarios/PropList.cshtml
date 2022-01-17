@@ -1,0 +1,85 @@
+﻿@page
+@model VisitasDomiciliarias.App.Frontend.Pages.PropListModel
+@{
+    ViewData["Title"] = "Propietario";
+}
+<hr>
+
+<h1>@ViewData["Title"]</h1>
+
+<p>Registrate y conoce los beneficios que tenemos para ti y tu mascota</p>
+    
+<form method="get">
+        <div class="form-group">
+        <p>
+          Buscar: <input type="text" name="filtroBusqueda" asp-for="FiltroBusqueda" />
+        <input type="submit" value="Filtrar" />
+        </p>
+  </form>      
+<hr>
+<div class="container">
+  <div class="row">
+      <div class="col-9">
+          <h2 class="text-info">Lista de Propietarios</h2>
+      </div>      
+  </div>
+</div>
+
+</br>
+@if(Model.Propietarios.Count()>0)
+{
+    <table id="tblPropietarios" class="table table-striped table-bordered" style="width: 100%;">
+  <thead>
+    <tr>      
+      <th>@Html.DisplayNameFor(p => p.Propietarios.FirstOrDefault().PropietarioId)</th>
+      <th>@Html.DisplayNameFor(p => p.Propietarios.FirstOrDefault().Nombres)</th>
+      <th>@Html.DisplayNameFor(p => p.Propietarios.FirstOrDefault().Apellidos)</th>
+      <th>@Html.DisplayNameFor(p => p.Propietarios.FirstOrDefault().Identificacion)</th>
+      <th>@Html.DisplayNameFor(p => p.Propietarios.FirstOrDefault().Telefono)</th>
+      <th>@Html.DisplayNameFor(p => p.Propietarios.FirstOrDefault().Direccion)</th>
+    </tr>
+  </thead>
+
+   <tbody>
+    @foreach (var propietarios in Model.Propietarios)
+  {
+     <tr>
+       <td>@Html.DisplayFor(p => propietarios.PropietarioId)</td>
+       <td>@Html.DisplayFor(p => propietarios.Nombres)</td>
+       <td>@Html.DisplayFor(p => propietarios.Apellidos)</td>
+       <td>@Html.DisplayFor(p => propietarios.Identificacion)</td>
+       <td>@Html.DisplayFor(p => propietarios.Telefono)</td>
+       <td>@Html.DisplayFor(p => propietarios.Direccion)</td>
+       
+       <td>
+         <a class="btn btn-outline-primary table-btn" asp-page="./DetailsProp" asp-route-propietarioId="@propietarios.PropietarioId">
+         <i class="fas fa-info-circle fa-lg"></i> </a>
+        
+      </td>
+       <td>
+         <a class="btn btn-outline-primary table-btn" asp-page="./EditProp" asp-route-propietarioId="@propietarios.PropietarioId">
+         <i class="fas fa-user-edit" aria-hidden="true"> </i>
+        </a>
+       </td>
+
+       <td>
+         <a class="btn btn-outline-danger table-btn" asp-page="./DeleteP" asp-route-propietarioId="@propietarios.PropietarioId">
+         <i class="fas fa-trash-alt" aria-hidden="true"></i>
+        </a>
+       </td>
+
+     </tr> 
+  }  
+  </tbody>
+</table>
+} 
+else
+{
+  <p>No hay propietarios registrados</p>
+} 
+
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+<a asp-page="./EditProp" class="btn btn-primary">Registrar Propietario</a>
+</div>
+<a asp-page="./PropList" class="btn-default">Regresar a la lista de Propietarios </a>
+<hr>

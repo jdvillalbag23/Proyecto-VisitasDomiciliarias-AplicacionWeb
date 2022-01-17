@@ -1,0 +1,21 @@
+﻿@page
+@model VisitasDomiciliarias.App.Frontend.Pages.DetailsPropModel
+@{
+}
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h2 class="text-info">Detalle del Propietario: @Html.DisplayFor(p => p.Propietario.PropietarioId)</h2>
+                <ul class="list-group">
+                    <li class="list-group-item">Nombres: @Html.DisplayFor(p => p.Propietario.Nombres)</li>
+                    <li class="list-group-item">Apellidos: @Html.DisplayFor(p => p.Propietario.Apellidos)</li>
+                    <li class="list-group-item">Identificación: @Html.DisplayFor(p => p.Propietario.Identificacion)</li>
+                    <li class="list-group-item">Dirección: @Html.DisplayFor(p => p.Propietario.Direccion)</li>
+
+                </ul>            
+        </div>
+    </div>
+</div>
+<hr>
+<a asp-page="./PropList" class="btn-default">Regresar a la lista de Propietarios </a>
+<hr>

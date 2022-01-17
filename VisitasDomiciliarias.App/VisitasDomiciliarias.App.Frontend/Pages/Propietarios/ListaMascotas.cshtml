@@ -1,0 +1,61 @@
+﻿@page
+@model VisitasDomiciliarias.App.Frontend.Pages.ListaMascotasModel
+@{
+    int PropietarioId = Model.Propietario.PropietarioId;
+}
+
+<hr>
+<div class="container">
+  <div class="row">
+      <div class="col-10">
+          <h2 class="text-info">Lista de Mascotas</h2>
+      </div>      
+  </div>
+</div>
+<div>
+    Mostrando @Model.Mascoticas.Count() mascotas
+</div>
+
+<br>
+
+@if(Model.Mascoticas.Count()>0)
+{
+    <table id="tblMascotas" class="table table-striped table-bordered" style="width: 90%;">
+  <thead>
+    <tr> 
+      <th>@Html.DisplayNameFor(m => m.Mascoticas.FirstOrDefault().MascotaId)</th>     
+      <th>@Html.DisplayNameFor(m => m.Mascoticas.FirstOrDefault().Nombre)</th>
+      <th>@Html.DisplayNameFor(m => m.Mascoticas.FirstOrDefault().Raza)</th>
+      <th>@Html.DisplayNameFor(m => m.Mascoticas.FirstOrDefault().Edad)</th>
+      <th>@Html.DisplayNameFor(m => m.Mascoticas.FirstOrDefault().Tipo)</th>
+      <th>@Html.DisplayNameFor(m => m.Mascoticas.FirstOrDefault().Genre)</th>      
+            
+    </tr>
+  </thead>
+
+   <tbody>
+    @foreach (var mascota in Model.Mascoticas)
+  {
+     <tr>        
+       <td>@Html.DisplayFor(m => mascota.MascotaId)</td>
+       <td>@Html.DisplayFor(m => mascota.Nombre)</td>
+       <td>@Html.DisplayFor(m => mascota.Raza)</td>
+       <td>@Html.DisplayFor(m => mascota.Edad)</td>
+       <td>@Html.DisplayFor(m => mascota.Tipo)</td>
+       <td>@Html.DisplayFor(m => mascota.Genre)</td>
+   
+     </tr> 
+  }  
+  </tbody>
+</table>
+} 
+else
+{
+  <p>No hay mascotas registradas</p>
+} 
+
+<hr>
+<a class="btn btn-danger" asp-page="./EditProp" asp-route-PropietarioId="@PropietarioId">
+    <i aria-hidden="true">Regresar</i>
+</a>
+<hr>

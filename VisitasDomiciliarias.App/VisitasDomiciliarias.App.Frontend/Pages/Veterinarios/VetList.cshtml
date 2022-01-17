@@ -1,0 +1,88 @@
+﻿@page
+@model VisitasDomiciliarias.App.Frontend.Pages.VetListModel
+@{
+  ViewData["Title"] = "Veterinario";
+}
+
+<hr>
+
+<h1>@ViewData["Title"]</h1>
+
+<p>Registrate, y se parte de los profesinales de Mascota Feliz</p>
+
+<form method="get">
+  <div class="form-group">
+    <p>
+       Buscar: <input type="text" name="filtroBusqueda" asp-for="FiltroBusqueda" />
+      <input type="submit" value="Filtrar" />
+    </p>
+</form>
+<hr>
+<div class="container">
+  <div class="row">
+      <div class="col-9">
+          <h2 class="text-info">Lista de Veterinarios</h2>
+      </div>      
+  </div>
+</div>
+
+</br>
+
+@if(Model.Veterinarios.Count()>0)
+{
+    <table id="tblVeterinarios" class="table table-striped table-bordered" style="width: 100%;">
+  <thead>
+    <tr> 
+      <th>@Html.DisplayNameFor(v => v.Veterinarios.FirstOrDefault().VeterinarioId)</th>     
+      <th>@Html.DisplayNameFor(v => v.Veterinarios.FirstOrDefault().Nombres)</th>
+      <th>@Html.DisplayNameFor(v => v.Veterinarios.FirstOrDefault().Apellidos)</th>
+      <th>@Html.DisplayNameFor(v => v.Veterinarios.FirstOrDefault().Identificacion)</th>
+      <th>@Html.DisplayNameFor(v => v.Veterinarios.FirstOrDefault().Telefono)</th>
+      <th>@Html.DisplayNameFor(v => v.Veterinarios.FirstOrDefault().TarjProfesional)</th>
+            
+    </tr>
+  </thead>
+
+   <tbody>
+    @foreach (var veterinario in Model.Veterinarios)
+  {
+     <tr>
+       <td>@Html.DisplayFor(v => veterinario.VeterinarioId)</td>
+       <td>@Html.DisplayFor(v => veterinario.Nombres)</td>
+       <td>@Html.DisplayFor(v => veterinario.Apellidos)</td>
+       <td>@Html.DisplayFor(v => veterinario.Identificacion)</td>
+       <td>@Html.DisplayFor(v => veterinario.Telefono)</td>
+       <td>@Html.DisplayFor(v => veterinario.TarjProfesional)</td>
+                     
+       <td>
+          <a class="btn btn-outline-primary table-btn" asp-page="./DetailsVets" asp-route-veterinarioId="@veterinario.VeterinarioId">
+            <i class="fas fa-info-circle fa-lg"></i>
+          </a>
+        </td>
+        <td>
+          <a class="btn btn-outline-primary table-btn" asp-page="./EditVets" asp-route-veterinarioId="@veterinario.VeterinarioId">
+            <i class="fas fa-user-edit" aria-hidden="true"> </i>
+          </a>
+        </td>
+
+        <td>
+          <a class="btn btn-outline-danger table-btn" asp-page="./DeleteV" asp-route-veterinarioId="@veterinario.VeterinarioId">
+            <i class="fas fa-trash-alt" aria-hidden="true"></i>
+          </a>
+        </td>
+
+     </tr> 
+  }  
+  </tbody>
+</table>
+} 
+else
+{
+  <p>No hay Veterinarios registrados</p>
+} 
+
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+  <a asp-page="./EditVets" class="btn btn-primary">Registrar Veterinario</a>
+</div>
+<a asp-page="./VetList" class="btn-default">Regresar a la lista de Veterinarios </a>
+<hr>

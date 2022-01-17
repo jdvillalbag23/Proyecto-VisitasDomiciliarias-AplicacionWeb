@@ -1,0 +1,97 @@
+﻿@page
+@model VisitasDomiciliarias.App.Frontend.Pages.HistListModel
+@{
+    ViewData["Title"] = "Historia Clínica";
+}
+<hr>
+
+<h1>@ViewData["Title"]</h1>
+
+<p>Revisa la historia clínica de tu mascota</p>
+<form method="get">
+    <div class="form-group">
+        <p>
+            Buscar: <input type="text" name="filtroBusqueda" asp-for="FiltroBusqueda" />
+            <input type="submit" value="Filtrar" />
+        </p>
+</form>
+<hr>
+<div class="container">
+  <div class="row">
+      <div class="col-10">
+          <h2 class="text-info">Lista de Visitas</h2>
+      </div>      
+  </div>
+</div>
+
+</br>
+
+@if(Model.Historias.Count()>0)
+{
+    <table id="tblHistorias" class="table table-striped table-bordered" style="width: 90%;">
+  <thead>
+    <tr> 
+      <th>@Html.DisplayNameFor(h => h.Historias.FirstOrDefault().MascotaId)</th>     
+      <th>@Html.DisplayNameFor(h => h.Historias.FirstOrDefault().VeterinarioId)</th>
+      <th>@Html.DisplayNameFor(h => h.Historias.FirstOrDefault().HistoriaId)</th>
+      <th>@Html.DisplayNameFor(h => h.Historias.FirstOrDefault().Temperatura)</th>
+      <th>@Html.DisplayNameFor(h => h.Historias.FirstOrDefault().Peso)</th>
+      <th>@Html.DisplayNameFor(h => h.Historias.FirstOrDefault().FrecRespiratoria)</th>
+      <th>@Html.DisplayNameFor(h => h.Historias.FirstOrDefault().FrecCardiaca)</th>
+      <th>@Html.DisplayNameFor(h => h.Historias.FirstOrDefault().EstadoAnimo)</th>
+      <th>@Html.DisplayNameFor(h => h.Historias.FirstOrDefault().FechaVisita)</th>
+      <th>@Html.DisplayNameFor(h => h.Historias.FirstOrDefault().Recomendaciones)</th>
+            
+    </tr>
+  </thead>
+
+   <tbody>
+    @foreach (var historia in Model.Historias)
+  {
+     <tr>        
+       <td>@Html.DisplayFor(h => historia.MascotaId)</td>
+       <td>@Html.DisplayFor(h => historia.VeterinarioId)</td>
+       <td>@Html.DisplayFor(h => historia.HistoriaId)</td>
+       <td>@Html.DisplayFor(h => historia.Temperatura)</td>
+       <td>@Html.DisplayFor(h => historia.Peso)</td>
+       <td>@Html.DisplayFor(h => historia.FrecRespiratoria)</td>
+       <td>@Html.DisplayFor(h => historia.FrecCardiaca)</td>
+       <td>@Html.DisplayFor(h => historia.EstadoAnimo)</td>
+       <td>@Html.DisplayFor(h => historia.FechaVisita)</td>
+       <td>@Html.DisplayFor(h => historia.Recomendaciones)</td>
+       
+                     
+                <td>
+                    <a class="btn btn-outline-primary table-btn" asp-page="./DetailsHist"
+                    asp-route-idHistoria="@historia.HistoriaId">
+                        <i class="fas fa-info-circle fa-lg"></i>
+                    </a>
+                </td>
+
+                <td>
+                    <a class="btn btn-outline-primary table-btn" asp-page="./EditHist" asp-route-idHistoria="@historia.HistoriaId">
+                        <i class="fas fa-user-edit" aria-hidden="true"> </i>
+                    </a>
+                </td>
+
+                <td>
+                    <a class="btn btn-outline-danger table-btn" asp-page="./DeleteH" asp-route-idHistoria="@historia.HistoriaId">
+                        <i class="fas fa-trash-alt" aria-hidden="true"></i>
+                    </a>
+                </td>
+
+     </tr> 
+  }  
+  </tbody>
+</table>
+} 
+else
+{
+  <p>No hay Historias Clínicas registradas</p>
+} 
+
+<div class="d-grid gap-2 col-3 mx-auto">
+    <a asp-page="./EditHist" class="btn btn-primary">Adicionar Historia</a>
+</div>
+<a asp-page="./HistList" class="btn-default">Regresar a la lista de Historias Clínicas </a>
+<hr>

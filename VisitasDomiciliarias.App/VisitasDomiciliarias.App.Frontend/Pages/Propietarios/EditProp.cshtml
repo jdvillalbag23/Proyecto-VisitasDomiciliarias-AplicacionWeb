@@ -1,0 +1,64 @@
+﻿@page
+@model VisitasDomiciliarias.App.Frontend.Pages.EditPropModel
+@{
+    int PropietarioId = Model.Propietario.PropietarioId;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h2 class="text-info">Edita tu información o Regístrate</h2>
+
+            <form method="post">
+                <input type="hidden" asp-for="Propietario.PropietarioId" />
+
+                <div class="mb-3">
+                    <label asp-for="Propietario.Nombres"></label>
+                    <input asp-for="Propietario.Nombres" class="form-control" placeholder="Ingrese el nombre">
+                    <span class="text-danger" asp-validation-for="Propietario.Nombres"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Propietario.Apellidos"></label>
+                    <input asp-for="Propietario.Apellidos" class="form-control" placeholder="Ingrese los Apellidos">
+                    <span class="text-danger" asp-validation-for="Propietario.Apellidos"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Propietario.Identificacion"></label>
+                    <input asp-for="Propietario.Identificacion" class="form-control" placeholder="Ingrese el número de identificación">
+                    <span class="text-danger" asp-validation-for="Propietario.Identificacion"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Propietario.Telefono"></label>
+                    <input asp-for="Propietario.Telefono" class="form-control" placeholder="Ingrese el número de teléfono">
+                    <span class="text-danger" asp-validation-for="Propietario.Telefono"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Propietario.Direccion"></label>
+                    <input asp-for="Propietario.Direccion" class="form-control" placeholder="Ingrese la dirección">
+                    <span class="text-danger" asp-validation-for="Propietario.Direccion"></span>
+                </div>
+                
+                <hr>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+
+                <a class="btn btn-outline-danger table-btn" asp-page="./ListaMascotas"
+                    asp-route-idPropietario="@PropietarioId">
+                    <i class="fas fa-paw" aria-hidden="true"> Ver Mascotas</i>
+                </a>
+
+            </form>
+        </div>
+    </div>
+</div>
+<hr>
+<a asp-page="./PropList" class="btn-default">Regresar a la lista de Propietarios </a>
+<hr>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial"></partial>
+}

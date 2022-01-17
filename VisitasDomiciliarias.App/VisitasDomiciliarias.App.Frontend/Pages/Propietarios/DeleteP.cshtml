@@ -1,0 +1,58 @@
+﻿@page
+@model VisitasDomiciliarias.App.Frontend.Pages.DeletePModel
+@{
+    int idPropietario = Model.Propietario.PropietarioId;
+}
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h2 class="text-info">Borrar Registro</h2>
+            <form method="post">
+                <input type="hidden" asp-for="Propietario.PropietarioId" />
+                <div class="form-group">
+                    <label asp-for="Propietario.Nombres"></label>
+                    <input asp-for="Propietario.Nombres" class="form-control" readonly>
+                    <span class="text-danger" asp-validation-for="Propietario.Nombres"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Propietario.Apellidos"></label>
+                    <input asp-for="Propietario.Apellidos" class="form-control" readonly>
+                    <span class="text-danger" asp-validation-for="Propietario.Apellidos"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Propietario.Identificacion"></label>
+                    <input asp-for="Propietario.Identificacion" class="form-control" readonly>
+                    <span class="text-danger" asp-validation-for="Propietario.Identificacion"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Propietario.Telefono"></label>
+                    <input asp-for="Propietario.Telefono" class="form-control" readonly>
+                    <span class="text-danger" asp-validation-for="Propietario.Telefono"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Propietario.Direccion"></label>
+                    <input asp-for="Propietario.Direccion" class="form-control" readonly>
+                    <span class="text-danger" asp-validation-for="Propietario.Direccion"></span>
+                </div>
+                <hr>
+                <div class="col-12">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                        <label class="form-check-label" for="invalidCheck">
+                            Estoy de acuerdo en eliminar el registro
+                        </label>
+                        <div class="invalid-feedback">
+                            Debes estar de acuerdo para poder eliminar el registro.
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <button type="submit" class="btn btn-primary">Eliminar</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+<hr>
+<a asp-page="./PropList" class="btn-default">Regresar a la lista de Propietarios </a>
+<hr>

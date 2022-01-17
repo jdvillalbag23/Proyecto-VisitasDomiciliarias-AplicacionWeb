@@ -1,0 +1,57 @@
+﻿@page
+@model VisitasDomiciliarias.App.Frontend.Pages.EditVetsModel
+@{
+    int idVeterinario = Model.Veterinario.VeterinarioId;
+}
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h2 class="text-info">Edita tu información o Regístrate</h2>
+
+            <form method="post">
+                <input type="hidden" asp-for="Veterinario.VeterinarioId" />
+                <div class="form-group">
+                    <label asp-for="Veterinario.Nombres"></label>
+                    <input asp-for="Veterinario.Nombres" class="form-control" placeholder="Ingrese los nombres">
+                    <span class="text-danger" asp-validation-for="Veterinario.Nombres"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Veterinario.Apellidos"></label>
+                    <input asp-for="Veterinario.Apellidos" class="form-control" placeholder="Ingrese los Apellidos">
+                    <span class="text-danger" asp-validation-for="Veterinario.Apellidos"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Veterinario.Identificacion"></label>
+                    <input asp-for="Veterinario.Identificacion" class="form-control" placeholder="Ingrese la identificación">
+                    <span class="text-danger" asp-validation-for="Veterinario.Identificacion"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Veterinario.Telefono"></label>
+                    <input asp-for="Veterinario.Telefono" class="form-control" placeholder="Ingrese el número de Teléfono">
+                    <span class="text-danger" asp-validation-for="Veterinario.Telefono"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Veterinario.TarjProfesional"></label>
+                    <input asp-for="Veterinario.TarjProfesional" class="form-control" placeholder="Ingrese la Tarjeta Profesional">
+                    <span class="text-danger" asp-validation-for="Veterinario.TarjProfesional"></span>
+                </div>
+                <hr>
+                <button type="submit" class="btn btn-outline-primary">Guardar</button>
+
+                <a class="btn btn-danger table-btn" asp-page="./ListMascoticas"
+                    asp-route-VeterinarioId="@idVeterinario">
+                    <i class="fas fa-paw" aria-hidden="true"> Ver Mascotas</i>
+                </a> 
+
+            </form>
+        </div>
+    </div>
+</div>
+<hr>
+<a asp-page="./VetList" class="btn-default">Lista de Veterinarios </a>
+<hr>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial"></partial>
+}

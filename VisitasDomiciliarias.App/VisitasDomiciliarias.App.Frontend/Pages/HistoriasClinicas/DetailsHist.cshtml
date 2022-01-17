@@ -1,0 +1,26 @@
+﻿@page
+@model VisitasDomiciliarias.App.Frontend.Pages.DetailsHistModel
+@{
+}
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h2 class="text-info">Detalle de la Historia Clínica: @Html.DisplayFor(h => h.Historia.HistoriaId)</h2>
+                <ul class="list-group">
+                    <li class="list-group-item">Mascota ID: @Html.DisplayFor(h => h.Historia.MascotaId)</li>
+                    <li class="list-group-item">Veterinario ID: @Html.DisplayFor(h => h.Historia.VeterinarioId)</li>
+                    <li class="list-group-item">Temperatura (C°): @Html.DisplayFor(h => h.Historia.Temperatura)</li>
+                    <li class="list-group-item">Peso (Kg): @Html.DisplayFor(h => h.Historia.Peso)</li>
+                    <li class="list-group-item">Frec. Respiratoria: @Html.DisplayFor(h => h.Historia.FrecRespiratoria)</li>
+                    <li class="list-group-item">Frec. Cardiaca: @Html.DisplayFor(h => h.Historia.FrecCardiaca)</li>
+                    <li class="list-group-item">Fecha y hora de visita: @Html.DisplayFor(h => h.Historia.FechaVisita)</li>
+                    <li class="list-group-item">Estado de Ánimo: @Html.DisplayFor(h => h.Historia.EstadoAnimo)</li>
+                    <li class="list-group-item">Recomendaciones: @Html.DisplayFor(h => h.Historia.Recomendaciones)</li>
+                    
+                </ul>            
+        </div>
+    </div>
+</div>
+<hr>
+<a asp-page="./HistList" class="btn-default">Regresar a la lista de Historias Clínicas </a>
+<hr>

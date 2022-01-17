@@ -1,0 +1,58 @@
+﻿@page
+@model VisitasDomiciliarias.App.Frontend.Pages.ListaVeterinariosModel
+@{
+    int idMascota = Model.Mascota.MascotaId;
+}
+<hr>
+<div class="container">
+  <div class="row">
+      <div class="col-10">
+          <h2 class="text-info">Lista de Veterinarios</h2>
+      </div>      
+  </div>
+</div>
+<div>
+    Mostrando @Model.MascotasVeterinarios.Count() veterinarios
+</div>
+
+<br>
+
+@if(Model.MascotasVeterinarios.Count()>0)
+{
+    <table id="tblMascotasVeterinarios" class="table table-striped table-bordered" style="width: 90%;">
+  <thead>
+    <tr> 
+      <th>@Html.DisplayNameFor(m => m.MascotasVeterinarios.FirstOrDefault().VeterinarioId)</th>     
+      <th>@Html.DisplayNameFor(m => m.MascotasVeterinarios.FirstOrDefault().Veterinario.Nombres)</th>
+      <th>@Html.DisplayNameFor(m => m.MascotasVeterinarios.FirstOrDefault().Veterinario.Apellidos)</th>
+      <th>@Html.DisplayNameFor(m => m.MascotasVeterinarios.FirstOrDefault().Veterinario.Telefono)</th>
+      <th>@Html.DisplayNameFor(m => m.MascotasVeterinarios.FirstOrDefault().Veterinario.TarjProfesional)</th>          
+            
+    </tr>
+  </thead>
+
+<tbody>
+    @foreach (var mascota in Model.MascotasVeterinarios)
+  {
+     <tr>        
+       <td>@Html.DisplayFor(m => mascota.VeterinarioId)</td>
+       <td>@Html.DisplayFor(m => mascota.Veterinario.Nombres)</td>
+       <td>@Html.DisplayFor(m => mascota.Veterinario.Apellidos)</td>
+       <td>@Html.DisplayFor(m => mascota.Veterinario.Telefono)</td>
+       <td>@Html.DisplayFor(m => mascota.Veterinario.TarjProfesional)</td>
+          
+     </tr> 
+  }  
+  </tbody>
+</table>
+} 
+else
+{
+  <p>No hay veterinarios registrados</p>
+} 
+ 
+<hr>
+<a class="btn btn-danger" asp-page="./EditMasc" asp-route-mascotaId="@idMascota">
+    <i aria-hidden="true">Regresar</i>
+</a>
+<hr>

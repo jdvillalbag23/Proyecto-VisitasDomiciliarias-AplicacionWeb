@@ -1,0 +1,76 @@
+﻿@page
+@model VisitasDomiciliarias.App.Frontend.Pages.EditMascModel
+@{
+    int idMascota = Model.Mascota.MascotaId;
+    int idPropietario = Model.Mascota.PropietarioId;
+}
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h2 class="text-info">Edita o Registra la información de tu mascota</h2>
+
+            <form method="post">
+                <input type="hidden" asp-for="Mascota.MascotaId" />
+
+                <div class="form-group">
+                    <label asp-for="Mascota.PropietarioId"></label>
+                    <input asp-for="Mascota.PropietarioId" class="form-control"
+                        placeholder="Ingrese el Id del Propietario">
+                    <span class="text-danger" asp-validation-for="Mascota.PropietarioId"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Mascota.Nombre"></label>
+                    <input asp-for="Mascota.Nombre" class="form-control" placeholder="Ingrese el nombre de la mascota">
+                    <span class="text-danger" asp-validation-for="Mascota.Nombre"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Mascota.Raza"></label>
+                    <input asp-for="Mascota.Raza" class="form-control" placeholder="Ingrese la raza de la mascota">
+                    <span class="text-danger" asp-validation-for="Mascota.Raza"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Mascota.Edad"></label>
+                    <input asp-for="Mascota.Edad" class="form-control" placeholder="Ingrese la edad de la mascota">
+                    <span class="text-danger" asp-validation-for="Mascota.Edad"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Mascota.Tipo"></label>
+                    <input asp-for="Mascota.Tipo" class="form-control" placeholder="Ingrese el tipo de mascota">
+                    <span class="text-danger" asp-validation-for="Mascota.Tipo"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Mascota.Genre"></label>
+                    <input asp-for="Mascota.Genre" class="form-control" placeholder="Ingrese el sexo de la mascota">
+                    <span class="text-danger" asp-validation-for="Mascota.Genre"></span>
+                </div>
+
+                <hr>
+                <button type="submit" class="btn btn-outline-primary">Guardar</button>
+               
+                <a class="btn btn-danger table-btn" asp-page="./ListaVeterinarios"
+                    asp-route-MascotaId="@idMascota">
+                    <i class="fas fa-stethoscope" aria-hidden="true"> Ver Veterinarios</i>
+                </a> 
+
+                <a class="btn btn-outline-danger table-btn" asp-page="./Owner"
+                    asp-route-MascotaId="@idMascota">
+                    <i class="fas fa-user" aria-hidden="true"> Ver Propietario</i>
+                </a>
+
+            </form>
+        </div>
+    </div>
+</div>
+<hr>
+<a asp-page="./MascList" class="btn-default">Regresar a la lista de Mascotas </a>
+<hr>
+
+@* @section Scripts
+{
+<partial name="_ValidationScriptsPartial"></partial>
+} *@
